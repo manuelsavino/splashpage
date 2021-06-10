@@ -45,6 +45,12 @@ const Index = () => {
           speakerImage:
             'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
         },
+        3: {
+          speakerTitle: 'Guest Speaker',
+          speakerName: 'Ted Mosby',
+          speakerImage:
+            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+        },
       });
     }
     if (localStorage.getItem('sponsors') != null) {

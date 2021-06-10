@@ -139,6 +139,18 @@ const Index = () => {
           speakerImage:
             'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
         },
+        2: {
+          speakerTitle: 'Speaker',
+          speakerName: 'Joanna Smith',
+          speakerImage:
+            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+        },
+        3: {
+          speakerTitle: 'Guest Speaker',
+          speakerName: 'Ted Mosby',
+          speakerImage:
+            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+        },
       });
     }
     if (localStorage.getItem('sponsors') != null) {
@@ -171,15 +183,7 @@ const Index = () => {
       <div className='flex flex-col w-0 flex-1 overflow-hidden'>
         <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none'>
           <div className=''>
-            <div className='bg-gray-700 w-full h-12 fixed z-10 mb-14 pr-5'>
-              <button
-                onClick={onSubmit}
-                className='text-white bg-blue-500 rounded px-4 py-1 ml-auto mt-3 block'
-              >
-                Save
-              </button>
-            </div>
-            <div className='max-w-7xl mx-auto pt-20 pb-5'>
+            <div className='max-w-7xl mx-auto pt-5 pb-5'>
               <div>
                 <Hero heroOptions={heroOptions} />
                 <Speakers speakers={speakers} />
@@ -191,9 +195,15 @@ const Index = () => {
       </div>
       <div className='hidden md:flex md:flex-shrink-0'>
         <div className='flex flex-col w-96'>
-          <div className='flex flex-col h-0 flex-1 bg-gray-700 pt-12'>
-            <div className='flex-1 flex flex-col pt-5 pb-4 overflow-y-auto'>
+          <div className='flex flex-col h-0 flex-1 bg-gray-700 pt-1'>
+            <div className='flex-1 flex flex-col pb-4 overflow-y-auto'>
               <nav className='py-3 px-5'>
+                <button
+                  onClick={onSubmit}
+                  className='text-white bg-blue-500 rounded px-4 py-1 ml-auto  block'
+                >
+                  Save
+                </button>
                 <label className='text-white text-sm'>
                   Select area to edit
                 </label>
