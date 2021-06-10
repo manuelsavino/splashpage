@@ -4,6 +4,7 @@ import Speakers from '../components/Speakers';
 import Sponsors from '../components/Sponsors';
 import SpeakerOptions from '../components/SpeakerOptions';
 import SponsorOptions from '../components/SponsorOptions';
+import HeroOptions from '../components/HeroOptions';
 const Index = () => {
   const [selectedArea, setSelectedArea] = useState('Hero');
   const [heroOptions, setHeroOptions] = useState({
@@ -121,7 +122,15 @@ const Index = () => {
       <div className='flex flex-col w-0 flex-1 overflow-hidden'>
         <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none'>
           <div className=''>
-            <div className='max-w-7xl mx-auto'>
+            <div className='bg-gray-700 w-full h-12 fixed z-10 mb-14 pr-5'>
+              <button
+                onClick={onSubmit}
+                className='text-white bg-blue-500 rounded px-4 py-1 ml-auto mt-3 block'
+              >
+                Save
+              </button>
+            </div>
+            <div className='max-w-7xl mx-auto pt-20 pb-5'>
               <div>
                 <Hero heroOptions={heroOptions} />
                 <Speakers speakers={speakers} />
@@ -133,7 +142,7 @@ const Index = () => {
       </div>
       <div className='hidden md:flex md:flex-shrink-0'>
         <div className='flex flex-col w-96'>
-          <div className='flex flex-col h-0 flex-1 bg-gray-700'>
+          <div className='flex flex-col h-0 flex-1 bg-gray-700 pt-12'>
             <div className='flex-1 flex flex-col pt-5 pb-4 overflow-y-auto'>
               <nav className='py-3 px-5'>
                 <label className='text-white text-sm'>
@@ -147,115 +156,10 @@ const Index = () => {
                 </select>
 
                 {selectedArea === 'Hero' && (
-                  <>
-                    <div className='flex flex-col space-y-1'>
-                      <h2 className='text-white text-3xl mt-4'>
-                        Hero Image Options
-                      </h2>
-                      <label>
-                        <span className='text-white text-sm'>
-                          Hero Background
-                        </span>
-                        <input
-                          className='w-full py-1 rounded pl-2'
-                          type='text'
-                          name='heroImg'
-                          value={heroOptions.heroImg}
-                          onChange={changeHeroOptions}
-                        ></input>
-                      </label>
-                    </div>
-
-                    <div className='flex flex-col space-y-1'>
-                      <h2 className='text-white text-3xl mt-4'>Hero Content</h2>
-                      <label>
-                        <span className='text-white text-sm'>Headline</span>
-                        <input
-                          className='w-full py-1 rounded pl-2'
-                          type='text'
-                          name='headline'
-                          value={heroOptions.headline}
-                          onChange={changeHeroOptions}
-                        ></input>
-                      </label>
-                      <label>
-                        <span className='text-white text-sm'>
-                          Headline Color
-                        </span>
-                        <input
-                          className='w-full rounded'
-                          type='color'
-                          name='headlineColor'
-                          value={heroOptions.headlineColor}
-                          onChange={changeHeroOptions}
-                        ></input>
-                      </label>
-                      <div>
-                        <label className='text-white text-sm'>
-                          Headline Text Size
-                        </label>
-                        <select
-                          className='w-full py-2 rounded pl-2'
-                          name='textSize'
-                          onChange={changeHeroOptions}
-                          value={heroOptions.textSize}
-                        >
-                          <option value='text-4xl'>Small</option>
-                          <option value='text-5xl'>Medium</option>
-                          <option value='text-6xl'>Large</option>
-                        </select>
-                        <label>
-                          <span className='text-white text-sm'>CTA Copy</span>
-                          <textarea
-                            className='w-full py-1 rounded pl-2'
-                            name='heroCopy'
-                            value={heroOptions.heroCopy}
-                            onChange={changeHeroOptions}
-                          />
-                        </label>
-                        <label>
-                          <span className='text-white text-sm'>CTA Copy</span>
-                          <input
-                            className='w-full py-1 rounded pl-2'
-                            type='text'
-                            name='ctaCopy'
-                            value={heroOptions.ctaCopy}
-                            onChange={changeHeroOptions}
-                          ></input>
-                        </label>
-                      </div>
-                      <div className='flex space-x-2 justify-between'>
-                        <label className='w-full'>
-                          <span className='text-white text-sm'>
-                            CTA BG Color
-                          </span>
-                          <input
-                            className='w-full rounded'
-                            type='color'
-                            name='ctaBg'
-                            value={heroOptions.ctaBg}
-                            onChange={changeHeroOptions}
-                          ></input>
-                        </label>
-                        <label className='w-full'>
-                          <span className='text-white text-sm'>CTA Color</span>
-                          <input
-                            className='w-full rounded'
-                            type='color'
-                            name='ctaCopyColor'
-                            value={heroOptions.ctaCopyColor}
-                            onChange={changeHeroOptions}
-                          ></input>
-                        </label>
-                      </div>
-                    </div>
-                    <button
-                      onClick={onSubmit}
-                      className='text-white bg-blue-500 rounded px-4 py-1 ml-auto mt-3 block'
-                    >
-                      Save
-                    </button>
-                  </>
+                  <HeroOptions
+                    heroOptions={heroOptions}
+                    changeHeroOptions={changeHeroOptions}
+                  />
                 )}
 
                 {selectedArea === 'Speakers' && (
@@ -275,12 +179,6 @@ const Index = () => {
                         removeSpeaker={removeSpeaker}
                       />
                     ))}
-                    <button
-                      onClick={onSubmit}
-                      className='text-white bg-blue-500 rounded px-4 py-1 ml-auto mt-3 block'
-                    >
-                      Save
-                    </button>
                   </div>
                 )}
                 {selectedArea === 'Sponsors' && (
@@ -300,12 +198,6 @@ const Index = () => {
                         removeSponsor={removeSponsor}
                       />
                     ))}
-                    <button
-                      onClick={onSubmit}
-                      className='text-white bg-blue-500 rounded px-4 py-1 ml-auto mt-3 block'
-                    >
-                      Save
-                    </button>
                   </div>
                 )}
               </nav>

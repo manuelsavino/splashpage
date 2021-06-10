@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Sponsors({ sponsors }) {
   return (
-    <div className='space-y-12'>
+    <div className='mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'>
       <div className='space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none'>
         {Object.keys(sponsors).length > 0 && (
           <>
