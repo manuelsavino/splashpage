@@ -1,37 +1,41 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import { useUser } from '@auth0/nextjs-auth0';
-import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { useState, useEffect } from 'react';
+import Hero from '../components/Hero';
+import Speakers from '../components/Speakers';
+import Sponsors from '../components/Sponsors';
 
 const Index = () => {
-  const { user, isLoading } = useUser();
+  const [heroOptions, setHeroOptions] = useState({});
+  const [speakers, setSpeakers] = useState({});
+  const [sponsors, setSponsors] = useState({});
 
+  useEffect(() => {
+    if (localStorage.getItem('heroOptions') != null) {
+      setHeroOptions(JSON.parse(localStorage.getItem('heroOptions')));
+    }
+    if (localStorage.getItem('speakers') != null) {
+      setSpeakers(JSON.parse(localStorage.getItem('speakers')));
+    }
+    if (localStorage.getItem('sponsors') != null) {
+      setSponsors(JSON.parse(localStorage.getItem('sponsors')));
+    }
+  }, []);
   return (
-    <div className='container mx-auto mt-5'>
-      <Head>
-        <title>NextJS Starter</title>
-      </Head>
-      {!isLoading && user && (
-        <Link
-          className='py-2 px-4 text-white rounded bg-red-500'
-          href='/api/auth/logout'
-        >
-          <a className='py-2 px-4 text-white rounded bg-red-500'>Logout</a>
-        </Link>
-      )}
-      {!isLoading && !user && (
-        <Link
-          className='py-2 px-4 text-white rounded bg-blue-500'
-          href='/api/auth/login'
-        >
-          Login
-        </Link>
-      )}
-      <h1 className='text-7xl pt-5'>Hello</h1>
+    <div className='h-screen flex overflow-hidden'>
+      <div className='flex flex-col w-0 flex-1 overflow-hidden'>
+        <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none'>
+          <div className=''>
+            <div className='max-w-7xl mx-auto'>
+              <div>
+                <Hero heroOptions={heroOptions} />
+                <Speakers speakers={speakers} />
+                <Sponsors sponsors={sponsors} />
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
-
-export const getServerSideProps = withPageAuthRequired();
 
 export default Index;
